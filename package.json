@@ -1,0 +1,22 @@
+{
+  "name": "advent-code",
+  "version": "1.0.0",
+  "description": "https://adventofcode.com/2019",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piloulac/advent-code.git"
+  },
+  "author": "Pierre-Louis Lacorte",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/piloulac/advent-code/issues"
+  },
+  "homepage": "https://github.com/piloulac/advent-code#readme",
+  "devDependencies": {
+    "commander": "^4.0.1"
+  }
+}

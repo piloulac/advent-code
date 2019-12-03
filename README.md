@@ -40,6 +40,11 @@ const contestResponse = () => {
 contestResponse(); // expected result is present as a comment HERE
 ```
 
+To create a "new day" run the following command that will create everything you need
+```sh
+node generateDay.js --day 3 # will create resources for day-3
+```
+
 In order to run exercice, make sure to have `node` installed. Then use:
 ```sh
 $ node day-1/part-2.js
