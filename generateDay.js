@@ -31,7 +31,7 @@ const createEndpoint = (day) => {
         const path = require('path');
         const filename = 'input.txt';
         
-        const input = fs.readFileSync(path.join(__dirname, filename));
+        const input = fs.readFileSync(path.join(__dirname, filename)).toString();
         
         const contestResponse = () => {
             // exercice specific functions are defined below
