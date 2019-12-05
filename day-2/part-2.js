@@ -12,25 +12,17 @@ const contestResponse = () => {
       array[2] = verb;
     }
 
-    const opcode1 = (addr1, addr2, addr3) => {
-      array[addr3] = array[addr1] + array[addr2]
-    }
-
-    const opcode2 = (addr1, addr2, addr3) => {
-      array[addr3] = array[addr1] * array[addr2]
-    }
-
     restoreGravity(noun, verb);
     let index = 0;
     while (array[index] !== 99) {
       const opcode = array[index];
 
       if (opcode === 1) {
-        opcode1(array[index + 1], array[index + 2], array[index + 3])
+        array[array[index + 3]] = array[array[index + 1]] + array[array[index + 2]]
       }
 
       if (opcode === 2) {
-        opcode2(array[index + 1], array[index + 2], array[index + 3])
+        array[array[index + 3]] = array[array[index + 1]] * array[array[index + 2]]
       }
 
       index += 4
