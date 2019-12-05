@@ -3,30 +3,31 @@
 const fs = require('fs');
 const commander = require('commander');
 
-const createFolderIfNeeded = (folderPath) => {
-    if (!fs.existsSync(folderPath)) {
-        fs.mkdirSync(folderPath);
-    }
+const createFolderIfNeeded = folderPath => {
+	if (!fs.existsSync(folderPath)) {
+		fs.mkdirSync(folderPath);
+	}
 };
 
 const formatBlock = (str, indentation) => {
-    return str
-        .split('\n')
-        .map((line, index, allLines) => {
-            if (line.trim() === '' && (index === 0 || index === allLines.length - 1)) {
-                return false;
-            }
+	return str
+		.split('\n')
+		.map((line, index, allLines) => {
+			if (line.trim() === '' && (index === 0 || index === allLines.length - 1)) {
+				return false;
+			}
 
-            return line.substr(indentation);
-        })
-        .filter((line) => {
-            return line !== false;
-        })
-        .join('\n');
+			return line.substr(indentation);
+		})
+		.filter(line => {
+			return line !== false;
+		})
+		.join('\n');
 };
 
-const createEndpoint = (day) => {
-    const codeFile = formatBlock(`
+const createEndpoint = day => {
+	const codeFile = formatBlock(
+		`
         const fs = require('fs');
         const path = require('path');
         const filename = 'input.txt';
@@ -44,25 +45,25 @@ const createEndpoint = (day) => {
         }
         
         contestResponse(); // expected result is present as a comment HERE
-    `, 8);
+    `,
+		8
+	);
 
-    createFolderIfNeeded(`${__dirname}/day-${day}`);
-    fs.writeFileSync(`${__dirname}/day-${day}/part-1.js`, codeFile, 'utf8');
-    fs.writeFileSync(`${__dirname}/day-${day}/part-2.js`, codeFile, 'utf8');
-    fs.writeFileSync(`${__dirname}/day-${day}/input.txt`, '', 'utf8');
+	createFolderIfNeeded(`${__dirname}/day-${day}`);
+	fs.writeFileSync(`${__dirname}/day-${day}/part-1.js`, codeFile, 'utf8');
+	fs.writeFileSync(`${__dirname}/day-${day}/part-2.js`, codeFile, 'utf8');
+	fs.writeFileSync(`${__dirname}/day-${day}/input.txt`, '', 'utf8');
 
-    console.log(`Files have been created in ${__dirname}/day-${day}`);
+	console.log(`Files have been created in ${__dirname}/day-${day}`);
 };
 
 if (require.main === module) {
-    commander
-        .option('-d, --day <number>', 'number of the day, e.g 1')
-        .parse(process.argv);
+	commander.option('-d, --day <number>', 'number of the day, e.g 1').parse(process.argv);
 
-    if (!commander.day) {
-        commander.help();
-        process.exit(1);
-    }
+	if (!commander.day) {
+		commander.help();
+		process.exit(1);
+	}
 
-    createEndpoint(commander.day);
+	createEndpoint(commander.day);
 }
