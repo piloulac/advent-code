@@ -44,11 +44,7 @@ const contestResponse = () => {
 			break;
 		}
 
-		stack.push(
-			...fistons
-				.filter(f => !visited.has(f))
-				.map(f => ({ val: f, depth }))
-		);
+		stack.push(...fistons.filter(f => !visited.has(f)).map(f => ({ val: f, depth })));
 	}
 
 	console.log(found - 2);
